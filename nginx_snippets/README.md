@@ -1,0 +1,7 @@
+- apt-get update
+- sudo apt-get install nginx
+- Check whether nginx is running
+    - aux | grex nginx
+    - ipconfig
+       - navigate to ip address
+    - sudo systemctl status nginx

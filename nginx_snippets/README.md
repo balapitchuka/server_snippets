@@ -2,6 +2,12 @@
 
 - Recommended OS - Linux
 
+
+### nginx configuration files in os
+
+#### Ubuntu
+/etc/nginx/
+
 ### Install Nginx
 - apt-get update
 - sudo apt-get install nginx
@@ -55,14 +61,25 @@ http {
 
 ```
 
-### Location Blocks
+### Location Blocks (order in which we mention location blocks here matters)
 
 - Exact Match
    -  = uri
 - Preferential Prefix Match
    - ^~ uri
 - REGEX Match
-   - ~* uri
+    - ~* uri
+   ```
+   # REGEX match - case sensitive
+    location ~ /greet[0-9] {
+       return 200 'Hello from NGINX "/greet" location - REGEX MATCH.';
+     }
+
+     # REGEX match - case insensitive
+    location ~* /greet[0-9] {
+      return 200 'Hello from NGINX "/greet" location - REGEX MATCH INSENSITIVE.';
+    }
+    ```
 - Prefix Match
     - uri
 
@@ -76,3 +93,9 @@ http {
     - ?name=ironman&&age=30
         - $arg_name
         - $arg_age
+
+### return and rewrite in nginx
+- rewrite
+    - **rewrite pattern URI**
+- return 
+    - ***return statuscode URI**

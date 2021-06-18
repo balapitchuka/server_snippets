@@ -126,7 +126,10 @@ server {
 
 
 ## Nginx Reverse Proxy
-The reverse proxy setup of Nginx can be really useful in load balancing external requests to microservices
++ The reverse proxy setup of Nginx can be really useful in load balancing external requests to microservices
++ Nginx is frequently used for setting up as a reverse proxy server. 
++ When set as a reverse proxy server, Nginx receives requests, passes them to the proxied servers, 
+  retrieves responses from the proxied servers, and sends them back to the clients.
 
 ##### Configure HTTP Reverse Proxy
 An HTTP reverse proxy can be set up in Nginx to proxy requests with the HTTP protocol. Relevant sections in nginx.conf for setting up an HTTP proxy are 

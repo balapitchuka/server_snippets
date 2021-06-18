@@ -123,3 +123,25 @@ server {
     }
 }
 ```
+
+##### Configure HTTP Reverse Proxy
+An HTTP reverse proxy can be set up in Nginx to proxy requests with the HTTP protocol. Relevant sections in nginx.conf for setting up an HTTP proxy are 
+```
+http {
+    upstream myapp1 {
+        server localhost:8081;
+        server localhost:8082;
+    }
+    server {
+        listen       8080;
+        server_name  localhost;
+        location / {
+            proxy_pass http://myapp1;
+        }
+    }
+
+Nginx HTTP Reverse Proxy Configuration
+```
+Now, an HTTP request similar to URL pattern http://localhost:8080 will be proxied to both of the following URLs in a load-balanced fashion:
++ http://localhost:8081
++ http://localhost:8082

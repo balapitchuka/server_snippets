@@ -124,6 +124,10 @@ server {
 }
 ```
 
+
+## Nginx Reverse Proxy
+The reverse proxy setup of Nginx can be really useful in load balancing external requests to microservices
+
 ##### Configure HTTP Reverse Proxy
 An HTTP reverse proxy can be set up in Nginx to proxy requests with the HTTP protocol. Relevant sections in nginx.conf for setting up an HTTP proxy are 
 ```
@@ -145,3 +149,17 @@ Nginx HTTP Reverse Proxy Configuration
 Now, an HTTP request similar to URL pattern http://localhost:8080 will be proxied to both of the following URLs in a load-balanced fashion:
 + http://localhost:8081
 + http://localhost:8082
+
+##### Configure TCP Reverse Proxy
+```
+stream {
+    upstream myapp1 {
+        server localhost:5672;
+        server localhost:5673;
+    }
+    server {
+        listen     5671;
+        proxy_pass myapp1;
+    }
+}
+```

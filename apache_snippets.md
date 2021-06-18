@@ -1,7 +1,7 @@
 # Apache Snippets
 
-In Red-Hat based distros such as CentOS and Fedora, virtual host files are stored in the /etc/httpd/conf.d. 
-While on Debian and its derivatives like Ubuntu the files are stored in the /etc/apache2/sites-available directory.
++ In Red-Hat based distros such as CentOS and Fedora, virtual host files are stored in the `/etc/httpd/conf.d`. 
++ While on Debian and its derivatives like Ubuntu the files are stored in the `/etc/apache2/sites-available directory`.
 
 
 ##### To redirect a website to HTTPS
@@ -28,7 +28,7 @@ While on Debian and its derivatives like Ubuntu the files are stored in the /etc
 ```
 
 ##### Reload Apache Server
-Whenever you make changes to the configuration files you need to restart or reload the Apache service for changes to take effect:
+###### Whenever you make changes to the configuration files you need to restart or reload the Apache service for changes to take effect:
 ```
 Debian and Ubuntu:
 

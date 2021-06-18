@@ -3,12 +3,12 @@
 - Recommended OS - Linux
 
 
-### nginx configuration files in os
+## nginx configuration files in os
 
-#### Ubuntu
+### Ubuntu
 /etc/nginx/
 
-### Install Nginx
+## Install Nginx
 - apt-get update
 - sudo apt-get install nginx
 - Check whether nginx is running
@@ -18,29 +18,35 @@
     - sudo systemctl status nginx
     - service nginx [start/stop/status] 
 
-### Installation Troubleshoot
+## Installation Troubleshoot
 - [Apache Default Page Showing](https://askubuntu.com/questions/642238/why-do-i-still-see-an-apache-site-on-nginx/642288#642288)
 
-### Configuration Terms
-    - Directive
-        - Example : server_name hello.com;
-            
-    - Context or Scope
-        - Sections with in configuration where directives are set
-        - http context 
-        - server context
-        - events context
+## Configuration Terms
+- Directive
+    - Example : server_name hello.com;
 
-### Reload Nginx(no downtime)
+- Context or Scope
+    - Sections with in configuration where directives are set
+    - http context 
+    - server context
+    - events context
+
+##### Reload Nginx(no downtime)
+```
 sudo systemctl reload nginx
+```
 
-### Restart Nginx
+##### Restart Nginx
+```
 sudo systemctl restart
+```
 
-### Check for configuration page errors
+##### Check for configuration page errors
+```
 nginx -t
+```
 
-### Create a virtual host
+##### Create a virtual host
 ```
 events {
  
@@ -57,7 +63,6 @@ http {
      root /sites/demo;
     }
 }
-
 
 ```
 
@@ -99,3 +104,22 @@ http {
     - **rewrite pattern URI**
 - return 
     - ***return statuscode URI**
+
+
+##### Redirect non-SSL to SSL
+```
+server {
+    listen   80;
+    listen   [::]:80;
+    listen   443 default_server ssl;
+
+    server_name www.example.com;
+
+    ssl_certificate        /path/to/my/cert;
+    ssl_certificate_key  /path/to/my/key;
+
+    if ($scheme = http) {
+        return 301 https://$server_name$request_uri;
+    }
+}
+```

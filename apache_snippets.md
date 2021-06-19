@@ -3,8 +3,15 @@
 + In Red-Hat based distros such as CentOS and Fedora, virtual host files are stored in the `/etc/httpd/conf.d`. 
 + While on Debian and its derivatives like Ubuntu the files are stored in the `/etc/apache2/sites-available directory`.
 
+## Installation
 
-##### To redirect a website to HTTPS
+### Windows
+[Install Apache For Windows](https://www.apachelounge.com/download/)
+
+After making configuration changes
++ go to bin directory and run `httpd -t`, checks for configuration syntax correctness
+
+##### To Redirect A Website To HTTPS
 ```
 <VirtualHost *:80> 
   ServerName example.com

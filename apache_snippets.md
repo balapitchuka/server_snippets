@@ -11,6 +11,9 @@
 After making configuration changes
 + go to bin directory and run `httpd -t`, checks for configuration syntax correctness
 
+
+## Snippets
+
 ##### To Redirect A Website To HTTPS
 ```
 <VirtualHost *:80> 

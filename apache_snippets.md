@@ -48,3 +48,13 @@ CentOS and Fedora:
 
 sudo systemctl reload httpd
 ```
+
+##### Avoid sending os and apache version for not found routes
+```
+nano /etc/apache2/conf-available/security.conf
+
+change ServerTokens OS to ServerTokens Prod
+change ServerSignature On to ServerSignature Off
+
+sudo systemctl restart apache2
+```

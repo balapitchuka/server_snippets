@@ -19,6 +19,12 @@ After making configuration changes
 
 ## Snippets
 
+Apache config test
+> apachectl -t
+
+
+
+
 ##### To Redirect A Website To HTTPS
 ```
 <VirtualHost *:80> 

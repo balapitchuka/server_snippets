@@ -1,4 +1,4 @@
-# Apache Snippets
+# Apache Server
 
 + In Red-Hat based distros such as CentOS and Fedora, virtual host files are stored in the `/etc/httpd/conf.d`. 
 + While on Debian and its derivatives like Ubuntu the files are stored in the `/etc/apache2/sites-available directory`.
@@ -16,6 +16,12 @@ After making configuration changes
   - `sudo apt install apache2` 
   - By default, Ubuntu will immediately start and enable the apache2 daemon as soon as its package is installed
 
+Apache Server Terminology
+- **Directive**
+  - A configuration command that controls one or more aspects of Apache's behavior. 
+  - Directives are placed in the Configuration File
+- **Configuration File**
+  - A text file containing Directives that control the configuration of Apache.
 
 ## Snippets
 
@@ -44,6 +50,12 @@ After making configuration changes
     - a2ensite /etc/apache2/sites-available/new-domain.conf
   - Disabling site with a2dissite
     - a2dissite /etc/apache2/sites-available/new-domain.conf
+ 
+##### Setting up Apache virtual hosts
+- OnceApache is installed and running, you can configure it to serve multiple domains by using virtual hosts.
+
+
+
 
 ##### To Redirect A Website To HTTPS
 ```

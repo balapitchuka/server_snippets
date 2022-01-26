@@ -68,7 +68,8 @@ After making configuration changes
 ## Snippets
 
 - Apache config test
-  ```apachectl -t
+  ```
+  apachectl -t
   ```
 - Restart apache server
   ```

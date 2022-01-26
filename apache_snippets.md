@@ -40,6 +40,10 @@ After making configuration changes
   
   So, once it has been done changes to the already linked file do not affect the link you just need Apache to reload config.
   ```
+  - Enabling site with a2ensite
+    - a2ensite /etc/apache2/sites-available/new-domain.conf
+  - Disabling site with a2dissite
+    - a2dissite /etc/apache2/sites-available/new-domain.conf
 
 ##### To Redirect A Website To HTTPS
 ```

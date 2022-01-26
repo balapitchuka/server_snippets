@@ -69,7 +69,8 @@ After making configuration changes
 
 - Apache config test
   ```
-  apachectl -t
+  > apachectl -t
+  > sudo apachectl configtest
   ```
 - Restart apache server
   ```

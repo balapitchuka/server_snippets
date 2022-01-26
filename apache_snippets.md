@@ -28,9 +28,11 @@ The a2ensite command creates a symbolic link to the particular configuration fil
 
 1.The apache2.conf file has an include for sites-enabled/*
 2.You make a site specific config file in sites-available/
-3.When you run a2ensite it creates a symbolic link to the file from sites-enabled to sites-available thus making Apache pick it up from the sites-enabled/* include. All a2dissite does is delete the symlink.
+3.When you run a2ensite it creates a symbolic link to the file from sites-enabled to sites-available thus making Apache 
+pick it up from the sites-enabled/* include. All a2dissite does is delete the symlink.
 
-So a2ensite is effectively just ln -s /etc/apache2/sites-available/sitename.conf /etc/apache2/sites-enabled/sitename.conf. So, once it has been done changes to the already linked file do not affect the link you just need Apache to reload config.
+So a2ensite is effectively just ln -s /etc/apache2/sites-available/sitename.conf /etc/apache2/sites-enabled/sitename.conf. 
+So, once it has been done changes to the already linked file do not affect the link you just need Apache to reload config.
 ```
 
 ##### To Redirect A Website To HTTPS

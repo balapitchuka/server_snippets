@@ -58,3 +58,10 @@ change ServerSignature On to ServerSignature Off
 
 sudo systemctl restart apache2
 ```
+
+##### View Loaded Apache Modules
+```
+apache2ctl -M
+
+apache2ctl -M | sort
+```

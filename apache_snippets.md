@@ -16,17 +16,36 @@ After making configuration changes
   - `sudo apt install apache2` 
   - By default, Ubuntu will immediately start and enable the apache2 daemon as soon as its package is installed
 
-Apache Server Terminology
+## Apache Server Terminology
 - **Directive**
   - A configuration command that controls one or more aspects of Apache's behavior. 
   - Directives are placed in the Configuration File
 - **Configuration File**
   - A text file containing Directives that control the configuration of Apache.
 
+
+
 ## Snippets
 
 - Apache config test
   ```apachectl -t```
+  
+- Check which port apache is running
+  ```
+  In Debian
+  > netstat -tlpn| grep apache
+  > ss -tlpn| grep apache
+  
+  In RHEL
+  > netstat -tlpn| grep httpd
+  > ss -tlpn| grep httpd
+  ```
+  
+- Change Apache server HTTP port
+  ```
+  Debian/Ubuntu based system  `/etc/apache2/ports.conf`
+  RHEL/CentOS based distributions  `/etc/httpd/conf/httpd.conf file`
+  ```
 
 - Enable site `a2ensite` command
   ```

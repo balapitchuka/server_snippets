@@ -11,6 +11,11 @@
 After making configuration changes
 + go to bin directory and run `httpd -t`, checks for configuration syntax correctness
 
+### Linux
+- Ubuntu
+  - `sudo apt install apache2` 
+  - By default, Ubuntu will immediately start and enable the apache2 daemon as soon as its package is installed
+
 
 ## Snippets
 

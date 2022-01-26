@@ -31,6 +31,8 @@
     - server context
     - events context
 
+
+
 ##### Reload Nginx(no downtime)
 ```
 sudo systemctl reload nginx
@@ -45,6 +47,20 @@ sudo systemctl restart
 ```
 nginx -t
 ```
+
+##### Hide nginx server version on Linux
+```
+1. sudo nano /etc/nginx/nginx.conf
+
+2. Add the following line to http context
+server_tokens off;
+
+3. Restart the nginx server
+sudo systemctl restart nginx
+```
+
+##### Hide nginx server name on Linux
+- compile Nginx from sources and include the --build=name option to set a nginx build name.
 
 ##### Create a virtual host
 ```

@@ -3,6 +3,9 @@
 + In Red-Hat based distros such as CentOS and Fedora, virtual host files are stored in the `/etc/httpd/conf.d`. 
 + While on Debian and its derivatives like Ubuntu the files are stored in the `/etc/apache2/sites-available directory`.
 
+
+
+
 ## Installation
 
 ### Windows
@@ -25,11 +28,54 @@ After making configuration changes
 
 
 
+## Apache Server Directives
+- ServerSignature
+  - Permits the adding of a footer line showing server name and version number under server-generated documents    such as error messages, mod_proxy ftp directory listings, mod_info output plus many more.
+  - It has three possible values:
+    - On – which allows the adding of a trailing footer line in server-generated documents,
+    - Off – disables the footer line and
+    - EMail – creates a “mailto:” reference; which sends a mail to the ServerAdmin of the referenced document.
+
+- ServerTokens
+  - It determines if the server response header field that is sent back to clients contains a description of the server OS-type and info concerning enabled Apache modules.
+  - Possible values
+  ```
+  ServerTokens   Full (or not specified) 
+  Info sent to clients: Server: Apache/2.4.2 (Unix) PHP/4.2.2 MyMod/1.2 
+
+  ServerTokens   Prod[uctOnly] 
+  Info sent to clients: Server: Apache 
+
+  ServerTokens   Major 
+  Info sent to clients: Server: Apache/2 
+
+  ServerTokens   Minor 
+  Info sent to clients: Server: Apache/2.4 
+
+  ServerTokens   Min[imal] 
+  Info sent to clients: Server: Apache/2.4.2 
+
+  ServerTokens   OS 
+  Info sent to clients: Server: Apache/2.4.2 (Unix)
+  ```
+  
+## Apache configuration files
+- Debian/Ubuntu systems
+  - sudo vi /etc/apache2/apache2.conf
+- RHEL/CentOS systems 
+  - sudo vi /etc/httpd/conf/httpd.conf       
+  
 ## Snippets
 
 - Apache config test
-  ```apachectl -t```
-  
+  ```apachectl -t
+  ```
+- Restart apache server
+  ```
+  > sudo systemctl restart apache2  #SystemD
+  > sudo service apache2 restart     #SysVInit
+  ```
+
 - Check which port apache is running
   ```
   In Debian
@@ -70,60 +116,60 @@ After making configuration changes
   - Disabling site with a2dissite
     - a2dissite /etc/apache2/sites-available/new-domain.conf
  
-##### Setting up Apache virtual hosts
-- OnceApache is installed and running, you can configure it to serve multiple domains by using virtual hosts.
+- Setting up Apache virtual hosts
+  - OnceApache is installed and running, you can configure it to serve multiple domains by using virtual hosts.
 
 
 
 
-##### To Redirect A Website To HTTPS
-```
-<VirtualHost *:80> 
-  ServerName example.com
-  ServerAlias www.example.com
+- To Redirect A Website To HTTPS
+  ```
+  <VirtualHost *:80> 
+    ServerName example.com
+    ServerAlias www.example.com
 
-  Redirect permanent / https://example.com/
-</VirtualHost>
+    Redirect permanent / https://example.com/
+  </VirtualHost>
 
-<VirtualHost *:443>
-  ServerName example.com
-  ServerAlias www.example.com
+  <VirtualHost *:443>
+    ServerName example.com
+    ServerAlias www.example.com
 
-  Protocols h2 http/1.1
+    Protocols h2 http/1.1
 
-  # SSL Configuration
+    # SSL Configuration
 
-  # Other Apache Configuration
+    # Other Apache Configuration
 
-</VirtualHost>
+  </VirtualHost>
 
-```
+  ```
 
-##### Reload Apache Server
-###### Whenever you make changes to the configuration files you need to restart or reload the Apache service for changes to take effect:
-```
-Debian and Ubuntu:
+- Reload Apache Server
+  - Whenever you make changes to the configuration files you need to restart or reload the Apache service for changes to take effect:
+  ```
+  Debian and Ubuntu:
 
-sudo systemctl reload apache2
+  sudo systemctl reload apache2
 
-CentOS and Fedora:
+  CentOS and Fedora:
 
-sudo systemctl reload httpd
-```
+  sudo systemctl reload httpd
+  ```
 
-##### Avoid sending os and apache version for not found routes
-```
-nano /etc/apache2/conf-available/security.conf
+- Avoid sending os and apache version for not found routes
+  ```
+  nano /etc/apache2/conf-available/security.conf
 
-change ServerTokens OS to ServerTokens Prod
-change ServerSignature On to ServerSignature Off
+  change ServerTokens OS to ServerTokens Prod
+  change ServerSignature On to ServerSignature Off
 
-sudo systemctl restart apache2
-```
+  sudo systemctl restart apache2
+  ```
 
-##### View Loaded Apache Modules
-```
-apache2ctl -M
+- View Loaded Apache Modules
+  ```
+  apache2ctl -M
 
-apache2ctl -M | sort
-```
+  apache2ctl -M | sort
+  ```

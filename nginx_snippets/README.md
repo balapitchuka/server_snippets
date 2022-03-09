@@ -8,6 +8,17 @@
 ### Ubuntu
 /etc/nginx/
 
+NginxDirectoryStructure
+
+|  path | purpose  |
+|---|---|
+| ./conf.d/*.conf  | Extra configuration files.|
+| ./nginx.conf  |  The primary configuration file. |
+| ./sites-available/*  |  Extra virtual host configuration files |
+| ./sites-enabled/* | Symlink to sites-available/<file> to enable vhost |
+| ./snippets/*.conf | Configuration snippets that can be included in configs |
+| ./mime.types | Maps file name extensions to MIME types of responses |
+
 ## Install Nginx
 - apt-get update
 - sudo apt-get install nginx

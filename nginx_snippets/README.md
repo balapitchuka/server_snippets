@@ -3,7 +3,7 @@
 - Recommended OS - Linux
 
 
-## nginx configuration files in os
+## Nginx configuration files in os
 
 ### Ubuntu
 /etc/nginx/
@@ -18,6 +18,29 @@ NginxDirectoryStructure
 | ./sites-enabled/* | Symlink to sites-available/<file> to enable vhost |
 | ./snippets/*.conf | Configuration snippets that can be included in configs |
 | ./mime.types | Maps file name extensions to MIME types of responses |
+| ./proxy_params | Commonly configured directives | 
+| ./scgi_params | Commonly configured directives |
+| ./apps.d/*.conf | Files included by /etc/nginx/sites-available/default |
+
+    
+
+**/etc/nginx/nginx.conf**
++ The first file that nginx reads when it starts is /etc/nginx/nginx.conf. This file is maintained by Nginx package maintainers and it is recommended that administrators avoid editing this file unless they also follow changes made by upstream.
++ It's advised to instead add customizations underneath of the conf.d/
+
+**/etc/nginx/conf.d/*.conf**
++ The default nginx.conf file includes a line that will load additional configurations files into the http { } context. In most cases, options previously specified in the primary nginx.conf file can be overridden by creating a file at this location.
+```
+Example: /etc/nginx/conf.d/ssl-tweaks.conf
+
+add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+add_header X-Frame-Options DENY;
+add_header X-Content-Type-Options nosniff;
+ssl_ciphers 'kEECDH+CHACHA kEECDH+AESGCM HIGH+kEECDH AESGCM 3DES !SRP !PSK !DSS !MD5 !LOW !MEDIUM !aNULL !eNULL !DH !kECDH';   
+```
+
+
+
 
 ## Install Nginx
 - apt-get update

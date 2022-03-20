@@ -74,7 +74,7 @@ sudo systemctl reload nginx
 
 ##### Restart Nginx
 ```
-sudo systemctl restart
+sudo systemctl restart nginx
 ```
 
 ##### Check for configuration page errors
